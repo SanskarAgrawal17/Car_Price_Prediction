@@ -1,0 +1,112 @@
+{% load static %} 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Members</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+ 
+
+  
+
+    <link rel="stylesheet" href="{% static 'css/members.css' %}">
+
+
+<body>
+ 
+  <video id="video-background" autoplay loop muted>
+    <source src="{% static 'videos/production_id_3752531 (1080p).mp4' %}" type="video/mp4">
+</video>
+<header class="p-3 opacity-75">
+    <nav>
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-white text-2xl font-semibold">Car Price Estimator</div>
+            <div class="space-x-4">
+                <a href="{% url 'home' %}" class="text-white hover:underline">Home</a>
+                <a href="{% url 'predict_price' %}" class="text-white hover:underline">Model</a>
+                <a href="{% url 'members' %}" class="text-white hover:underline">Members</a>
+                <a href="{% url 'logout' %}" class="text-white hover:underline">Logout</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+
+      
+
+  <!-- Additional Content Section -->
+  <section class="transparent-section text-white py-12">
+    <div class="container mx-auto px-4">
+        <div class="text-center">
+            <h2 class="text-3xl font-bold">Meet Our </h2><h2 class="continuous-color-transition">Developers </h2> 
+            <p class="text-lg mt-4">Discover All The Powerful Qualities Of Our Developers:</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+            <div class="card">
+                <img src="{% static "img\Sanskar_pic1.jpg" %}" alt="Sanskar Agarwal" class="rounded-full w-32 h-32 mx-auto mb-4">
+                <h3 class="card-title">Sanskar Agarwal</h3>
+                <p class="card-description">Sanskar Agarwal is known for his strong analytical skills and attention to detail. He excels in problem-solving and has a keen interest in data analysis and statistics. Sanskar is a dedicated team member who consistently delivers high-quality work.</p>
+                <div class="social-icons mt-4">
+                    <a href="https://github.com/SanskarAgrawal17" target="_blank" class="text-blue-600">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/sanskaragrawal17/" target="_blank" class="text-blue-800 ml-4">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="{% static "img/Mohitsharma.jpg" %}" alt="Mohit Sharma" class="rounded-full w-32 h-32 mx-auto mb-4">
+                <h3 class="card-title">Mohit Sharma</h3>
+                <p class="card-description">Mohit Sharma is a creative thinker with a passion for design and user experience. He has a knack for translating ideas into visually appealing and user-friendly designs. Mohit is a valuable asset for any project that requires a strong design element.</p>
+                <div class="social-icons mt-4">
+                    <a href="https://github.com/Mohitsharma1214/" target="_blank" class="text-blue-600">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/mohitsharmas78/" target="_blank" class="text-blue-800 ml-4">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="{% static "img/shivam.jpg" %}" alt="Shivam Pathak" class="rounded-full w-32 h-32 mx-auto mb-4">
+                <h3 class="card-title">Shivam Pathak</h3>
+                <p class="card-description">Shivam Pathak is a dependable and efficient team member. He is known for his strong work ethic and ability to meet project deadlines. Shivam is a reliable problem solver who can be counted on to handle various tasks effectively and efficiently.</p>
+                <div class="social-icons mt-4">
+                    <a href="https://github.com/ShivamPathak05" target="_blank" class="text-blue-600">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/shivampathak05/" target="_blank" class="text-blue-800 ml-4">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+  <!-- Footer Section -->
+  <footer class="transparent-section  text-white py-4">
+    <div class="container mx-auto text-center">
+      <p class="text-sm">&copy; 2023 Sanskar Agrawal, Mohit Sharma, Shivam Pathak. All Rights Reserved.</p>
+    </div>
+  </footer>
+  <div id="loading-spinner" class="hidden">
+    <div class="spinner"></div>
+  </div>
+  <script>
+    // Show the loading spinner when the page starts loading
+    window.addEventListener("load", function () {
+      document.getElementById("loading-spinner").style.display = "none";
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,147 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Price Prediction Model</title>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <link href="{% static 'css/predict_price.css' %}" rel="stylesheet">
+    <style>
+        /* Style the form container */
+        .predict-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #444;
+            border: 1px solid #2d2d2d;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        /* Style form field labels */
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        /* Style form input and select fields */
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Style the submit button */
+        .submit-button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        /* Add hover effect to the submit button */
+        .submit-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<video id="video-background" autoplay loop muted>
+    <source src="{% static 'videos/production_id_3752531 (1080p).mp4' %}" type="video/mp4">
+</video>
+<body class="bg-gray-100 text-gray-900">
+    <header class="p-3 opacity-75">
+        <nav>
+            <div class="container mx-auto flex justify-between items-center">
+                <div class="text-white text-2xl font-semibold">Car Price Estimator</div>
+                <div class="space-x-4">
+                    <a href="{% url 'home' %}" class="text-white hover:underline">Home</a>
+                    <a href="{% url 'predict_price' %}" class="text-white hover:underline">Model</a>
+                    <a href="{% url 'members' %}" class="text-white hover:underline">Members</a>
+                    <a href="{% url 'logout' %}" class="text-white hover:underline">Logout</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+   
+
+    <!-- Main Content -->
+
+    <section class="predict-container" style="background-color: rgba(0, 0, 0, 0.7); color: white;">
+        <h2 class="">Get a Price Estimate for Your Car</h2>
+        <form method="post">
+            {% csrf_token %}
+            <!-- Add your form fields here -->
+    
+            <div class="predict-group-1 mt-4">
+                <label for="{{ form.year.id_for_label }}" class="" required>Year of Manufacture:</label>
+                {{ form.year }}
+            </div>
+            
+            <div class="predict-group mt-4">
+                <label for="{{ form.present_price.id_for_label }}"required>Present Price:</label>
+                {{ form.present_price }}
+            </div>
+    
+            <div class="predict-group mt-4">
+                <label for "{{ form.kilometer_driven.id_for_label }} required">Kilometer Driven:</label>
+                {{ form.kilometer_driven }}
+            </div>
+            <div class="predict-group-1 mt-4">
+                <label for="{{ form.fuel_type.id_for_label }}" required>Fuel Type:</label>
+                {{ form.fuel_type }}
+            </div>
+            <div class="predict-group-1 mt-4">
+                <label for="{{ form.seller_type.id_for_label }}" required>Seller Type:</label>
+                {{ form.seller_type }}
+            </div>
+            <div class="predict-group-1 mt-4">
+                <label for="{{ form.transmission.id_for_label }}" required>Transmission:</label>
+                {{ form.transmission }}
+            </div>
+            <button type="submit" class="submit-button mt-6">
+                Get Price Estimate
+            </button>
+        </form>
+    </section>
+    
+    
+        <br>
+
+        <section class="transparent-section shadow-md rounded-lg p-6">
+            <h2 class="text-2xl font-semibold mb-4 text-center">Price Estimate:</h2>
+            <p class="continuous-color-transition text-center">{{ estimated_price }} {{ currency_symbol }}</p>
+        </section>
+  
+    <!-- Footer -->
+    <footer class="transparent-section text-white text-center py-4">
+        <p>&copy; 2023 Car Price Prediction System</p>
+    </footer>
+</body>
+</html>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var selectFields = [
+        "{{ form.year.id_for_label }}",
+        "{{ form.fuel_type.id_for_label }}",
+        "{{ form.seller_type.id_for_label }}",
+        "{{ form.transmission.id_for_label }}"
+    ];
+
+    selectFields.forEach(function(fieldId) {
+        var selectField = document.querySelector("#" + fieldId);
+        selectField.options[0].disabled = true;  // Disable the first option
+        selectField.options[0].selected = true;  // Select the first option
+    });
+});
+</script>
