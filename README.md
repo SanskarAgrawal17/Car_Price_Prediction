@@ -1,1 +1,5 @@
 # Car Price Prediction
+
+In the domain of "Car Price Prediction," I have developed a machine learning model leveraging the power of Linear Regression. This model is designed to analyze various features of cars, such as model year, Car mileage, Car Present Price, Car kilometers driven, Fuel Type, Seller Type, and transmission to predict their prices approximately. The implementation is encapsulated within a web application using the Django framework, providing an intuitive user interface. Users can input specific details about a car, and the system utilizes the trained "Linear Regression model" to estimate its market value. The front end, built with HTML and CSS, ensures a user-friendly experience, making the car price prediction accessible and informative for individuals interested in buying or selling vehicles.
+
+The fusion of machine learning, web development with Django, and a polished front-end interface not only facilitates precise car price predictions but also enhances user interaction, making the application a comprehensive tool for the automotive market.
